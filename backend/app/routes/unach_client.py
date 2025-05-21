@@ -7,17 +7,17 @@ import logging
 logger = logging.getLogger("uvicorn.error")
 
 # Coloca tu token aquí, al principio del módulo
-MI_TOKEN = ""
+MI_TOKEN = "xyz"
 
 class UnachApi:
     def __init__(self,
-                 base_url: str = "https://tu-dominio.com",  # Cambia esto por la URL de tu API
+                 base_url: str = "https://pruebas.unach.edu.ec:4432",
                  token: str = MI_TOKEN,
                  verify_ssl: bool = False):
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
         self.session.verify = verify_ssl
-        self.session.headers.update({"Authorization": f" {token}"})
+        self.session.headers.update({"Authorization": f"Bearer {token}"})
 
         # 🔁 Configurar reintentos automáticos (3 veces, solo en errores temporales)
         retries = Retry(
