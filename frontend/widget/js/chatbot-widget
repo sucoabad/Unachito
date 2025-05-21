@@ -1,0 +1,255 @@
+(function () {
+    const API_BASE = 'http://localhost:8000/api/chatbot';  // Cambia esto en producción
+    let estadoFlujo = null;
+    let datosReset = {};
+
+    const chatbotButton = document.getElementById("chatbot-button");
+    const chatbotPopup = document.getElementById("chatbot-popup");
+    const sendButton = document.getElementById("send-button");
+    const userInput = document.getElementById("user-input");
+
+    if (!chatbotButton || !chatbotPopup || !sendButton || !userInput) {
+        console.error("⚠️ No se encontraron los elementos del chatbot. Revisa la integración.");
+        return;
+    }
+
+    // Mostrar/ocultar el popup
+    chatbotButton.addEventListener("click", () => {
+        chatbotPopup.classList.toggle("hidden");
+    });
+
+    // Escuchar envíos por botón y Enter
+    sendButton.addEventListener("click", handleUserInput);
+    userInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            handleUserInput();
+        }
+    });
+
+    function handleUserInput() {
+        const userInputValue = userInput.value.trim();
+        if (userInputValue === '') return;
+
+        appendMessage("Tú", userInputValue);
+        userInput.value = "";
+
+        console.log("[FLUJO] Estado actual:", estadoFlujo);
+
+        const mensajeEnMinusculas = userInputValue.toLowerCase();
+
+        // 🟡 Detectar saludo si aún no hay nombre
+        const saludos = ['hola', 'buenos días', 'buenas tardes', 'buenas noches', 'saludos'];
+        if (saludos.includes(mensajeEnMinusculas) && !userName) {
+            appendMessage("Chatbot", "¡Hola! 😊 ¿Cuál es tu nombre para poder ayudarte mejor?");
+            return;
+        }
+
+        // 🧠 Detectar y guardar nombre si no está definido
+        if (!userName) {
+            const posibleNombre = extraerNombre(userInputValue);
+            if (posibleNombre) {
+                userName = posibleNombre;
+                appendMessage("Chatbot", `¡Mucho gusto, ${userName}! 😊 ¿En qué puedo ayudarte hoy?`);
+                return;
+            }
+        }
+
+        // 🔁 Flujo de recuperación de contraseña
+        if (estadoFlujo === 'esperando_cedula') {
+            manejarCedula(userInputValue);
+        } else if (estadoFlujo === 'esperando_otp') {
+            manejarOtp(userInputValue);
+        } else if (estadoFlujo === 'esperando_nueva_contrasena') {
+            manejarNuevaContrasena(userInputValue);
+        } else {
+            fetchChatbotResponse(userInputValue);
+        }
+    }
+
+
+
+    function extraerNombre(texto) {
+        const regexes = [
+            /me llamo\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i,
+            /soy\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i,
+            /mi nombre es\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i
+        ];
+        for (const regex of regexes) {
+            const match = texto.match(regex);
+            if (match) return capitalizar(match[1]);
+        }
+
+        // Si solo es una palabra, sin símbolos ni espacios, asumir como nombre
+        const palabras = texto.trim().split(/\s+/);
+        if (palabras.length === 1 && /^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(palabras[0])) {
+            return capitalizar(palabras[0]);
+        }
+
+        return null;
+    }
+
+    function capitalizar(nombre) {
+        return nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
+    }
+
+
+
+    function manejarCedula(cedula) {
+        datosReset.cedula = cedula;
+        appendMessage("Chatbot", `${userName ? `😊 ${userName}, ` : ''}enviando el código OTP a tu correo institucional... 🔄`);
+
+        fetch(`${API_BASE}/enviar_otp`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cedula: datosReset.cedula })
+        })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    appendMessage("Chatbot", `✅ ${userName ? `${userName}, ` : ''}${data.message} Por favor ingresa el código OTP recibido.`);
+                    estadoFlujo = 'esperando_otp';
+                } else {
+                    appendMessage("Chatbot", `❗ Error: ${data.detail || 'Hubo un problema al enviar el OTP.'}`);
+                    estadoFlujo = null;
+                }
+            })
+            .catch(error => {
+                console.error("[ERROR] Enviando OTP:", error);
+                appendMessage("Chatbot", "❗ Error de conexión al enviar el OTP.");
+                estadoFlujo = null;
+            });
+    }
+
+    function manejarOtp(otp) {
+        datosReset.otp = otp;
+        appendMessage("Chatbot", "Verificando el código OTP... 🔄");
+
+        fetch(`${API_BASE}/verificar_otp`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cedula: datosReset.cedula, otp: datosReset.otp })
+        })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    appendMessage("Chatbot", `✅ ${userName ? `${userName}, ` : ''}OTP verificado. Por favor ingresa tu nueva contraseña.`);
+                    estadoFlujo = 'esperando_nueva_contrasena';
+                } else {
+                    appendMessage("Chatbot", `❗ Error: ${data.detail || 'OTP incorrecto o expirado.'}`);
+                    estadoFlujo = null;
+                }
+            })
+            .catch(error => {
+                console.error("[ERROR] Verificando OTP:", error);
+                appendMessage("Chatbot", "❗ Error de conexión al verificar el OTP.");
+                estadoFlujo = null;
+            });
+    }
+
+    function manejarNuevaContrasena(nuevaContrasena) {
+        datosReset.new_password = nuevaContrasena;
+        appendMessage("Chatbot", "Actualizando tu contraseña... 🔄");
+
+        fetch(`${API_BASE}/reset_radius_password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: datosReset.cedula,
+                confirm_data: datosReset.otp,
+                new_password: datosReset.new_password,
+                grupo: datosReset.grupo || 'estudiantes'
+            })
+        })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    appendMessage("Chatbot", `✅ ¡Listo${userName ? `, ${userName}` : ''}! ${data.message}`);
+                } else {
+                    appendMessage("Chatbot", `❗ Error: ${data.detail || 'No se pudo cambiar la contraseña.'}`);
+                }
+            })
+            .catch(error => {
+                console.error("[ERROR] Cambiando contraseña:", error);
+                appendMessage("Chatbot", "❗ Error de conexión. Intenta nuevamente más tarde.");
+            })
+            .finally(() => {
+                estadoFlujo = null;
+                datosReset = {};
+            });
+    }
+
+    function appendMessage(sender, text, extraHTML = '') {
+        const msgContainer = document.getElementById("chatbot-messages");
+        const msg = document.createElement("div");
+        msg.classList.add('message');
+        msg.classList.add(sender === "Tú" ? 'user' : 'bot');
+        msg.innerHTML = `<div><strong>${sender}:</strong> ${text}</div>${extraHTML}`;
+        msgContainer.appendChild(msg);
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+    }
+
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest(".option-btn");
+        if (button) {
+            const opcion = button.getAttribute("data-option");
+            console.log("[DEBUG] Botón clickeado:", opcion);
+
+            if (opcion === 'wifi') {
+                const botonesHTML = `
+                    <div class="bot-options" style="margin-top: 10px;">
+                        <button class="option-btn grupo-estudiante" data-option="grupo-estudiante">✅ Sí, soy estudiante</button>
+                        <button class="option-btn grupo-docente" data-option="grupo-docente">❌ No, soy docente/administrativo</button>
+                    </div>
+                `;
+                appendMessage("Chatbot", "¿Eres estudiante? Por favor selecciona una opción:", botonesHTML);
+
+            } else if (opcion === 'grupo-estudiante') {
+                appendMessage("Chatbot", "✅ Has seleccionado *Estudiante*. Por favor ingresa tu cédula para enviar el código OTP.");
+                datosReset.grupo = 'estudiantes';
+                estadoFlujo = 'esperando_cedula';
+
+            } else if (opcion === 'grupo-docente') {
+                appendMessage("Chatbot", "✅ Has seleccionado *Docente/Administrativo*. Por favor ingresa tu cédula para enviar el código OTP.");
+                datosReset.grupo = 'docentes';
+                estadoFlujo = 'esperando_cedula';
+
+            } else if (opcion === 'office365') {
+                appendMessage("Chatbot", "Entendido ✅. Este módulo estará disponible pronto 🚧.");
+
+            } else if (opcion === 'moodle') {
+                appendMessage("Chatbot", "Para cambiar la contraseña de Moodle, accede al portal Moodle y usa la opción '¿Olvidaste tu contraseña?'.");
+
+            } else if (opcion === 'zoom') {
+                appendMessage("Chatbot", "Para cambiar la contraseña de Zoom, visita zoom.us y usa la opción de restablecimiento.");
+            }
+        }
+    });
+
+    function fetchChatbotResponse(question) {
+        fetch(`${API_BASE}/query`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pregunta: question })
+        })
+            .then(r => r.json())
+            .then(data => {
+                let respuesta = data.respuesta || 'Lo siento, hubo un problema al obtener la respuesta.';
+                let fuente = data.fuente ? `<br><small>🔎 Fuente: ${data.fuente}</small>` : '';
+
+                let botonesHTML = '';
+                if (data.acciones && Array.isArray(data.acciones) && data.acciones.length > 0) {
+                    botonesHTML += `<div class="bot-options" style="margin-top: 10px;">`;
+                    data.acciones.forEach(action => {
+                        botonesHTML += `<button class="option-btn ${action}" data-option="${action}">${action}</button>`;
+                    });
+                    botonesHTML += `</div>`;
+                }
+
+                appendMessage("Chatbot", `${respuesta}${fuente}`, botonesHTML);
+            })
+            .catch(error => {
+                console.error("[ERROR] Fetch chatbot:", error);
+                appendMessage("Chatbot", "Ocurrió un error. Inténtalo más tarde.");
+            });
+    }
+})();

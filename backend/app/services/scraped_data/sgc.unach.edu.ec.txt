@@ -1,0 +1,377 @@
+Facebook
+Facebook
+Twitter
+Twitter
+Youtube
+Youtube
+Unach Virtual
+correo institucional
+INTRODUCCIÓNOBJETIVO Y CAMPO DE APLICACIÓNREFERENCIAS NORMATIVASTÉRMINOS Y DEFINICIONESCOORDINACIÓN DEL SGC
+OBJETIVO Y CAMPO DE APLICACIÓN
+REFERENCIAS NORMATIVAS
+TÉRMINOS Y DEFINICIONES
+COORDINACIÓN DEL SGC
+CONTEXTO DE LA ORGANIZACIONHISTORIAMISIÓN Y VISIÓN SGCVALORES SGCPARTES INTERESADASALCANCE Y EXCLUSIONES
+HISTORIA
+MISIÓN Y VISIÓN SGC
+VALORES SGC
+PARTES INTERESADAS
+ALCANCE Y EXCLUSIONES
+PROCESOS DEL SGCMAPA DE PROCESOSCATÁLOGO DE PROCESOSINTERACCIÓN DE PROCESOSCONTROL DE LOS REGISTROSCONTROL DE LOS DOCUMENTOSGENERALIDADESESTRUCTURA ORGANIZACIONAL
+MAPA DE PROCESOS
+CATÁLOGO DE PROCESOS
+INTERACCIÓN DE PROCESOS
+CONTROL DE LOS REGISTROS
+CONTROL DE LOS DOCUMENTOS
+GENERALIDADES
+ESTRUCTURA ORGANIZACIONAL
+LIDERAZGOLIDERAZGO Y COMPROMISOPOLÍTICA DE CALIDADROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+LIDERAZGO Y COMPROMISO
+POLÍTICA DE CALIDAD
+ROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+PLANIFICACIONPLANIFICACION Y OBJETIVOS DE CALIDADMANUAL DE PROCESOSPLANIFICACIÓN DE LOS CAMBIOS
+PLANIFICACION Y OBJETIVOS DE CALIDAD
+MANUAL DE PROCESOS
+PLANIFICACIÓN DE LOS CAMBIOS
+APOYO Y OPERACIÓNAPOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOSOPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+APOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+RECURSOS ECONÓMICOS
+RECURSOS HUMANOS
+GESTIÓN DE LA INFRAESTRUCTURA
+AMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+OPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+PLANIFICACIÓN Y CONTROL OPERACIONAL
+REQUISITOS PARA LOS PRODUCTOS Y SERVICIOS
+COMUNICACIÓN CON EL CLIENTE
+DISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOS
+CONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTE
+PROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDAD
+CONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIO
+IDENTIFICACIÓN Y TRAZABILIDAD
+LIBERACIÓN DE LOS SERVICIOS
+CONTROL DE LAS SALIDAS NO CONFORMES
+EVALUACIÓN Y MEJORAEVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+EVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+SEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓN
+AUDITORIA INTERNA
+REVISIÓN POR LA ALTA DIRECCIÓN
+MEJORA
+INFORMACIÓN DOCUMENTADA DEL SGCDOCUMENTOS Y REGISTROS SGC
+DOCUMENTOS Y REGISTROS SGC
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Frequently asked questions
+Which online casino is best?
+Vavada kasyno onlineoferuje gry na każdą okazję i dla każdego typu gracza. Od prostych automatów po skomplikowane gry stołowe, Vavada kasyno PL ma w ofercie coś zarówno dla nowicjuszy, jak i dla doświadczonych graczy. Vavada login zapewnia szybki dostęp do ulubionych gier oraz do licznych promocji i bonusów. Kasyno działa w bezpiecznym i licencjonowanym środowisku, oferując legalną i uczciwą rozrywkę. Sprawdź ofertę Vavada Casino i zacznij swoją przygodę z grą!
+Av. Antonio José de Sucre Km 1 1/2 vía a Guano Riobamba-Ecuador(593) 3 3730880
+Buzón de sugerecias
+Localización en el mapa
+Descargar Directorio Teléfonico IP
+hosgeldin bonusu veren siteler
+Creado por:
+Facebook
+Facebook
+Twitter
+Twitter
+Youtube
+Youtube
+Unach Virtual
+correo institucional
+INTRODUCCIÓNOBJETIVO Y CAMPO DE APLICACIÓNREFERENCIAS NORMATIVASTÉRMINOS Y DEFINICIONESCOORDINACIÓN DEL SGC
+OBJETIVO Y CAMPO DE APLICACIÓN
+REFERENCIAS NORMATIVAS
+TÉRMINOS Y DEFINICIONES
+COORDINACIÓN DEL SGC
+CONTEXTO DE LA ORGANIZACIONHISTORIAMISIÓN Y VISIÓN SGCVALORES SGCPARTES INTERESADASALCANCE Y EXCLUSIONES
+HISTORIA
+MISIÓN Y VISIÓN SGC
+VALORES SGC
+PARTES INTERESADAS
+ALCANCE Y EXCLUSIONES
+PROCESOS DEL SGCMAPA DE PROCESOSCATÁLOGO DE PROCESOSINTERACCIÓN DE PROCESOSCONTROL DE LOS REGISTROSCONTROL DE LOS DOCUMENTOSGENERALIDADESESTRUCTURA ORGANIZACIONAL
+MAPA DE PROCESOS
+CATÁLOGO DE PROCESOS
+INTERACCIÓN DE PROCESOS
+CONTROL DE LOS REGISTROS
+CONTROL DE LOS DOCUMENTOS
+GENERALIDADES
+ESTRUCTURA ORGANIZACIONAL
+LIDERAZGOLIDERAZGO Y COMPROMISOPOLÍTICA DE CALIDADROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+LIDERAZGO Y COMPROMISO
+POLÍTICA DE CALIDAD
+ROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+PLANIFICACIONPLANIFICACION Y OBJETIVOS DE CALIDADMANUAL DE PROCESOSPLANIFICACIÓN DE LOS CAMBIOS
+PLANIFICACION Y OBJETIVOS DE CALIDAD
+MANUAL DE PROCESOS
+PLANIFICACIÓN DE LOS CAMBIOS
+APOYO Y OPERACIÓNAPOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOSOPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+APOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+RECURSOS ECONÓMICOS
+RECURSOS HUMANOS
+GESTIÓN DE LA INFRAESTRUCTURA
+AMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+OPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+PLANIFICACIÓN Y CONTROL OPERACIONAL
+REQUISITOS PARA LOS PRODUCTOS Y SERVICIOS
+COMUNICACIÓN CON EL CLIENTE
+DISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOS
+CONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTE
+PROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDAD
+CONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIO
+IDENTIFICACIÓN Y TRAZABILIDAD
+LIBERACIÓN DE LOS SERVICIOS
+CONTROL DE LAS SALIDAS NO CONFORMES
+EVALUACIÓN Y MEJORAEVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+EVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+SEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓN
+AUDITORIA INTERNA
+REVISIÓN POR LA ALTA DIRECCIÓN
+MEJORA
+INFORMACIÓN DOCUMENTADA DEL SGCDOCUMENTOS Y REGISTROS SGC
+DOCUMENTOS Y REGISTROS SGC
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Frequently asked questions
+Which online casino is best?
+Vavada kasyno onlineoferuje gry na każdą okazję i dla każdego typu gracza. Od prostych automatów po skomplikowane gry stołowe, Vavada kasyno PL ma w ofercie coś zarówno dla nowicjuszy, jak i dla doświadczonych graczy. Vavada login zapewnia szybki dostęp do ulubionych gier oraz do licznych promocji i bonusów. Kasyno działa w bezpiecznym i licencjonowanym środowisku, oferując legalną i uczciwą rozrywkę. Sprawdź ofertę Vavada Casino i zacznij swoją przygodę z grą!
+Av. Antonio José de Sucre Km 1 1/2 vía a Guano Riobamba-Ecuador(593) 3 3730880
+Buzón de sugerecias
+Localización en el mapa
+Descargar Directorio Teléfonico IP
+hosgeldin bonusu veren siteler
+Creado por:
+Facebook
+Facebook
+Twitter
+Twitter
+Youtube
+Youtube
+Unach Virtual
+correo institucional
+INTRODUCCIÓNOBJETIVO Y CAMPO DE APLICACIÓNREFERENCIAS NORMATIVASTÉRMINOS Y DEFINICIONESCOORDINACIÓN DEL SGC
+OBJETIVO Y CAMPO DE APLICACIÓN
+REFERENCIAS NORMATIVAS
+TÉRMINOS Y DEFINICIONES
+COORDINACIÓN DEL SGC
+CONTEXTO DE LA ORGANIZACIONHISTORIAMISIÓN Y VISIÓN SGCVALORES SGCPARTES INTERESADASALCANCE Y EXCLUSIONES
+HISTORIA
+MISIÓN Y VISIÓN SGC
+VALORES SGC
+PARTES INTERESADAS
+ALCANCE Y EXCLUSIONES
+PROCESOS DEL SGCMAPA DE PROCESOSCATÁLOGO DE PROCESOSINTERACCIÓN DE PROCESOSCONTROL DE LOS REGISTROSCONTROL DE LOS DOCUMENTOSGENERALIDADESESTRUCTURA ORGANIZACIONAL
+MAPA DE PROCESOS
+CATÁLOGO DE PROCESOS
+INTERACCIÓN DE PROCESOS
+CONTROL DE LOS REGISTROS
+CONTROL DE LOS DOCUMENTOS
+GENERALIDADES
+ESTRUCTURA ORGANIZACIONAL
+LIDERAZGOLIDERAZGO Y COMPROMISOPOLÍTICA DE CALIDADROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+LIDERAZGO Y COMPROMISO
+POLÍTICA DE CALIDAD
+ROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+PLANIFICACIONPLANIFICACION Y OBJETIVOS DE CALIDADMANUAL DE PROCESOSPLANIFICACIÓN DE LOS CAMBIOS
+PLANIFICACION Y OBJETIVOS DE CALIDAD
+MANUAL DE PROCESOS
+PLANIFICACIÓN DE LOS CAMBIOS
+APOYO Y OPERACIÓNAPOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOSOPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+APOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+RECURSOS ECONÓMICOS
+RECURSOS HUMANOS
+GESTIÓN DE LA INFRAESTRUCTURA
+AMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+OPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+PLANIFICACIÓN Y CONTROL OPERACIONAL
+REQUISITOS PARA LOS PRODUCTOS Y SERVICIOS
+COMUNICACIÓN CON EL CLIENTE
+DISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOS
+CONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTE
+PROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDAD
+CONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIO
+IDENTIFICACIÓN Y TRAZABILIDAD
+LIBERACIÓN DE LOS SERVICIOS
+CONTROL DE LAS SALIDAS NO CONFORMES
+EVALUACIÓN Y MEJORAEVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+EVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+SEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓN
+AUDITORIA INTERNA
+REVISIÓN POR LA ALTA DIRECCIÓN
+MEJORA
+INFORMACIÓN DOCUMENTADA DEL SGCDOCUMENTOS Y REGISTROS SGC
+DOCUMENTOS Y REGISTROS SGC
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+LaUniversidad Nacional de Chimborazo, en el año 2016, toma la decisión de cambiar su modelo de gestión funcional a laGestión organizacional por procesos, por lo que, para poder cumplir con este cometido, se conforma una Comisión Técnica del Sistema de Gestión de la Calidad mediante Resolución de Consejo Universitario No. 0066-HCU-17-03-2016, la cual estaba integrada por un docente de cada facultad y se encontraba bajo la dirección de la Dra. Anita Ríos, Vicerrectora Administrativa, misma que decide implementar unSistema de Gestión de la Calidad, a través de unProyecto de Investigación a nivel institucional, facilitando su diseño e implementación, tomado como referencia también los requisitos exigidos en la Norma ISO 9001:2015, dicho proyecto fue aprobado por el Instituto de Ciencia, Innovación, Tecnología y Saberes de la Institución, mediante Resolución 70-C.I-29-septiembre-2016.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+El proyecto constaba de las siguientes etapas: etapa1. Diagnóstico institucional, etapa 2. Diseño del Sistema de Gestión de Calidad, etapa 3. Aplicación del Sistema de Gestión de Calidad, etapa 4. Realización de auditorías internas del Sistema de Gestión de la Calidad de la UNACH, llegando a su término en el año 2018 y fueaprobado mediante Resolución No. 353-CU-20-12-2018, lo cual evidencia que las autoridades Institucionales y académicas se encuentran comprometidos con la implementación, mantenimiento y la mejora continua del Sistema de Gestión de Calidad, y están atentos a proporcionar los recursos necesarios para lograr este propósito y mejorar el nivel de satisfacción de las partes interesadas.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Como parte de este compromiso, en el año 2019, se crea laCoordinación de Gestión de la Calidad, cuya misión es la de gestionar la planificación, operación, evaluación y mejora continua del servicio de educación proporcionado por la Universidad Nacional de Chimborazo, mediante el sistema de gestión de la calidad, con el fin de mejorar la eficacia institucional que respondan a los requerimientos de las partes interesadas, tal como lo establece el Art. 64 del Reglamento de Gestión Organizacional por Procesos.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Para el año 2020, se consolida la Coordinación contando con una estructura un poco más sólida, permitiendo que se puedan actualizar los procesos declarados, de acuerdo a su realidad y a las nuevas exigencias de entes reguladores, tales como el Consejo de Aseguramiento de la Calidad de la Educación Superior y del Ministerio de Trabajo.
+Frequently asked questions
+Which online casino is best?
+Vavada kasyno onlineoferuje gry na każdą okazję i dla każdego typu gracza. Od prostych automatów po skomplikowane gry stołowe, Vavada kasyno PL ma w ofercie coś zarówno dla nowicjuszy, jak i dla doświadczonych graczy. Vavada login zapewnia szybki dostęp do ulubionych gier oraz do licznych promocji i bonusów. Kasyno działa w bezpiecznym i licencjonowanym środowisku, oferując legalną i uczciwą rozrywkę. Sprawdź ofertę Vavada Casino i zacznij swoją przygodę z grą!
+Av. Antonio José de Sucre Km 1 1/2 vía a Guano Riobamba-Ecuador(593) 3 3730880
+Buzón de sugerecias
+Localización en el mapa
+Descargar Directorio Teléfonico IP
+hosgeldin bonusu veren siteler
+Creado por:
+Facebook
+Facebook
+Twitter
+Twitter
+Youtube
+Youtube
+Unach Virtual
+correo institucional
+INTRODUCCIÓNOBJETIVO Y CAMPO DE APLICACIÓNREFERENCIAS NORMATIVASTÉRMINOS Y DEFINICIONESCOORDINACIÓN DEL SGC
+OBJETIVO Y CAMPO DE APLICACIÓN
+REFERENCIAS NORMATIVAS
+TÉRMINOS Y DEFINICIONES
+COORDINACIÓN DEL SGC
+CONTEXTO DE LA ORGANIZACIONHISTORIAMISIÓN Y VISIÓN SGCVALORES SGCPARTES INTERESADASALCANCE Y EXCLUSIONES
+HISTORIA
+MISIÓN Y VISIÓN SGC
+VALORES SGC
+PARTES INTERESADAS
+ALCANCE Y EXCLUSIONES
+PROCESOS DEL SGCMAPA DE PROCESOSCATÁLOGO DE PROCESOSINTERACCIÓN DE PROCESOSCONTROL DE LOS REGISTROSCONTROL DE LOS DOCUMENTOSGENERALIDADESESTRUCTURA ORGANIZACIONAL
+MAPA DE PROCESOS
+CATÁLOGO DE PROCESOS
+INTERACCIÓN DE PROCESOS
+CONTROL DE LOS REGISTROS
+CONTROL DE LOS DOCUMENTOS
+GENERALIDADES
+ESTRUCTURA ORGANIZACIONAL
+LIDERAZGOLIDERAZGO Y COMPROMISOPOLÍTICA DE CALIDADROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+LIDERAZGO Y COMPROMISO
+POLÍTICA DE CALIDAD
+ROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+PLANIFICACIONPLANIFICACION Y OBJETIVOS DE CALIDADMANUAL DE PROCESOSPLANIFICACIÓN DE LOS CAMBIOS
+PLANIFICACION Y OBJETIVOS DE CALIDAD
+MANUAL DE PROCESOS
+PLANIFICACIÓN DE LOS CAMBIOS
+APOYO Y OPERACIÓNAPOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOSOPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+APOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+RECURSOS ECONÓMICOS
+RECURSOS HUMANOS
+GESTIÓN DE LA INFRAESTRUCTURA
+AMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+OPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+PLANIFICACIÓN Y CONTROL OPERACIONAL
+REQUISITOS PARA LOS PRODUCTOS Y SERVICIOS
+COMUNICACIÓN CON EL CLIENTE
+DISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOS
+CONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTE
+PROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDAD
+CONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIO
+IDENTIFICACIÓN Y TRAZABILIDAD
+LIBERACIÓN DE LOS SERVICIOS
+CONTROL DE LAS SALIDAS NO CONFORMES
+EVALUACIÓN Y MEJORAEVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+EVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+SEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓN
+AUDITORIA INTERNA
+REVISIÓN POR LA ALTA DIRECCIÓN
+MEJORA
+INFORMACIÓN DOCUMENTADA DEL SGCDOCUMENTOS Y REGISTROS SGC
+DOCUMENTOS Y REGISTROS SGC
+El objeto de este documento es establecer y describir el Sistema de Gestión de la Calidad (SGC) de la Universidad Nacional de Chimborazo basado en el Modelo Genérico de Evaluación Institucional, carrera y programas y en la Norma ISO 9001:2015 y servir como plataforma de mejoramiento continuo a través de la política de calidad, misión y visión institucionales así como los objetivos de calidad para proporcionar nuestros servicios cumpliendo con los requisitos, necesidades y expectativas de los usuarios y partes interesadas.
+El objeto de este documento es establecer y describir el Sistema de Gestión de la Calidad (SGC) de la Universidad Nacional de Chimborazo basado en el Modelo Genérico de Evaluación Institucional
+Este documento describe el Sistema de Gestión de la Calidad, el alcance y la justificación de las exclusiones junto con la descripción y relación entre los procesos.Así mismo, para cada sección se hace referencia a los procedimientos establecidos correspondientes.
+Este documento describe el Sistema de Gestión de la Calidad, el alcance y la justificación de las exclusiones junto con la descripción y relación entre los procesos.
+Av. Antonio José de Sucre Km 1 1/2 vía a Guano Riobamba-Ecuador(593) 3 3730880
+Buzón de sugerecias
+Localización en el mapa
+Descargar Directorio Teléfonico IP
+hosgeldin bonusu veren siteler
+Creado por:
+Facebook
+Facebook
+Twitter
+Twitter
+Youtube
+Youtube
+Unach Virtual
+correo institucional
+INTRODUCCIÓNOBJETIVO Y CAMPO DE APLICACIÓNREFERENCIAS NORMATIVASTÉRMINOS Y DEFINICIONESCOORDINACIÓN DEL SGC
+OBJETIVO Y CAMPO DE APLICACIÓN
+REFERENCIAS NORMATIVAS
+TÉRMINOS Y DEFINICIONES
+COORDINACIÓN DEL SGC
+CONTEXTO DE LA ORGANIZACIONHISTORIAMISIÓN Y VISIÓN SGCVALORES SGCPARTES INTERESADASALCANCE Y EXCLUSIONES
+HISTORIA
+MISIÓN Y VISIÓN SGC
+VALORES SGC
+PARTES INTERESADAS
+ALCANCE Y EXCLUSIONES
+PROCESOS DEL SGCMAPA DE PROCESOSCATÁLOGO DE PROCESOSINTERACCIÓN DE PROCESOSCONTROL DE LOS REGISTROSCONTROL DE LOS DOCUMENTOSGENERALIDADESESTRUCTURA ORGANIZACIONAL
+MAPA DE PROCESOS
+CATÁLOGO DE PROCESOS
+INTERACCIÓN DE PROCESOS
+CONTROL DE LOS REGISTROS
+CONTROL DE LOS DOCUMENTOS
+GENERALIDADES
+ESTRUCTURA ORGANIZACIONAL
+LIDERAZGOLIDERAZGO Y COMPROMISOPOLÍTICA DE CALIDADROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+LIDERAZGO Y COMPROMISO
+POLÍTICA DE CALIDAD
+ROLES, RESPONSABILIDAD Y AUTORIDAD EN LA ORGANIZACIÓN
+PLANIFICACIONPLANIFICACION Y OBJETIVOS DE CALIDADMANUAL DE PROCESOSPLANIFICACIÓN DE LOS CAMBIOS
+PLANIFICACION Y OBJETIVOS DE CALIDAD
+MANUAL DE PROCESOS
+PLANIFICACIÓN DE LOS CAMBIOS
+APOYO Y OPERACIÓNAPOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOSOPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+APOYO AL SGC Y RECURSOSRECURSOS ECONÓMICOSRECURSOS HUMANOSGESTIÓN DE LA INFRAESTRUCTURAAMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+RECURSOS ECONÓMICOS
+RECURSOS HUMANOS
+GESTIÓN DE LA INFRAESTRUCTURA
+AMBIENTE DE TRABAJO PARA LA OPERACIÓN DE PROCESOS
+OPERACION SGCPLANIFICACIÓN Y CONTROL OPERACIONALREQUISITOS PARA LOS PRODUCTOS Y SERVICIOSCOMUNICACIÓN CON EL CLIENTEDISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOSCONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTEPROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDADLIBERACIÓN DE LOS SERVICIOSCONTROL DE LAS SALIDAS NO CONFORMES
+PLANIFICACIÓN Y CONTROL OPERACIONAL
+REQUISITOS PARA LOS PRODUCTOS Y SERVICIOS
+COMUNICACIÓN CON EL CLIENTE
+DISEÑO Y DESARROLLO DE LOS PRODUCTOS Y SERVICIOS
+CONTROL DE LOS PROCESOS, PRODUCTOS Y SERVICIOS SUMINISTRADOS EXTERNAMENTE
+PROVISIÓN DEL SERVICIOCONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIOIDENTIFICACIÓN Y TRAZABILIDAD
+CONTROL DE LA PROVISIÓN DEL PRODUCTO O SERVICIO
+IDENTIFICACIÓN Y TRAZABILIDAD
+LIBERACIÓN DE LOS SERVICIOS
+CONTROL DE LAS SALIDAS NO CONFORMES
+EVALUACIÓN Y MEJORAEVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+EVALUACIÓN DE DESEMPEÑOSEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓNAUDITORIA INTERNAREVISIÓN POR LA ALTA DIRECCIÓNMEJORA
+SEGUIMIENTO, MEDICIÓN, ANÁLISIS Y EVALUACIÓN
+AUDITORIA INTERNA
+REVISIÓN POR LA ALTA DIRECCIÓN
+MEJORA
+INFORMACIÓN DOCUMENTADA DEL SGCDOCUMENTOS Y REGISTROS SGC
+DOCUMENTOS Y REGISTROS SGC
+La normativa de referencia usada para desarrollar este documento de gestión de la calidad ha sido:
+Norma Técnica de Administración por Procesos y Prestación de Servicios de la Secretaría Nacional de la Administración Pública.
+Norma Técnica de Administración por Procesos y Prestación de Servicios de la Secretaría Nacional de la Administración Pública.
+Modelo Genérico de Evaluación Institucional, Carreras y Programas del CACES
+Modelo Genérico de Evaluación Institucional, Carreras y Programas del CACES
+La Norma UNE-EN ISO 9001:2015 Sistemas de gestión de la calidad. Requisitos.
+La Norma UNE-EN ISO 9001:2015 Sistemas de gestión de la calidad. Requisitos.
+La Norma UNE-EN ISO 9000:2015 Sistemas de gestión de la calidad. Fundamentos y vocabulario.
+La Norma UNE-EN ISO 9000:2015 Sistemas de gestión de la calidad. Fundamentos y vocabulario.
+La Norma UNE-EN ISO 19011:2011 Directrices para la Auditoría de sistemas de Gestión
+Av. Antonio José de Sucre Km 1 1/2 vía a Guano Riobamba-Ecuador(593) 3 3730880
+Buzón de sugerecias
+Localización en el mapa
+Descargar Directorio Teléfonico IP
+hosgeldin bonusu veren siteler
+Creado por:
