@@ -1,229 +1,145 @@
-# Unachito Chatbot
 
-![Unachito Logo](https://chatbot.unach.edu.ec/widget/img/logo.png)
+# 🤖 Unachito Chatbot
 
-**Unachito** es un agente de IA conversacional diseñado para descentralizar y automatizar el soporte técnico de contraseñas y FAQs en la UNACH.  
-Implementado en Python & FastAPI sobre MySQL, se integra como widget en WordPress y C# y ofrece:
+![Logo Unachito](https://chatbot.unach.edu.ec/widget/img/logo.png)
 
-- 🔐 Restablecimiento remoto de contraseñas Wi-Fi (RADIUS) y Zoom (LDAP) vía OTP  
-- 🤖 Clasificación de intenciones + búsqueda semántica en FAQs  
-- ⭐ Feedback activo (👍/👎) y escalado automático de casos complejos  
-- 📈 Detección de tendencias y alertas automáticas al equipo de DTIC  
-- ⏰ Scheduler para retraining mensual y clustering semanal (pendiente de habilitar)
+**Unachito** es un agente conversacional de la Universidad Nacional de Chimborazo (UNACH), desarrollado para automatizar la asistencia técnica relacionada con contraseñas institucionales (Wi-Fi, Zoom) y responder preguntas frecuentes (FAQs). Está diseñado para integrarse fácilmente con sistemas WordPress y C#.
 
 ---
 
-## 📂 Estructura del repositorio
+## 🚀 Funcionalidades principales
 
-unachito_chatbot/
-├── app/
-│ ├── main.py # Inicializa FastAPI, Prometheus y Scheduler
-│ ├── chatbot_routes.py # Endpoints de OTP, query, rating y escalado
-│ ├── scheduler.py # Tareas con APScheduler
-│ ├── services/ # Lógica de negocio y conectores
-│ │ ├── ml.py # Fine-tuning y clasificación de intenciones
-│ │ ├── trending.py # Detección de tendencias y alertas
-│ │ ├── radius_service.py # Cambio de password en RADIUS
-│ │ ├── ldap_service.py # Cambio de password en LDAP (Zoom)
-│ │ ├── office365.py # (Futuro) reset via Graph API
-│ │ ├── moodle.py # (Futuro) integración con REST API Moodle
-│ │ ├── voice.py # (Opcional) STT wrapper
-│ │ └── ocr.py # (Opcional) OCR de capturas de pantalla
-│ └── utils/
-│ └── db.py # Conexión y sesión con MySQL
-├── update_scraped_data.py # Script para refrescar datos y embeddings
-├── requirements.txt # Dependencias
-└── README.md # Este archivo
-
+- 🔐 **Restablecimiento de contraseñas**:
+  - Wi-Fi (RADIUS)
+  - Zoom (LDAP)
+- 🔑 Verificación mediante OTP enviado al correo institucional
+- 📚 Respuestas semánticas a preguntas frecuentes usando embeddings
+- ✅ Clasificación automática de intenciones (saludo, pregunta, etc.)
+- 🧠 Evaluación continua con botones de 👍 / 👎
+- 🌐 Integración como widget flotante en cualquier sitio web (HTML/JS)
 
 ---
 
-## 🚀 Instalación
+## 🛠️ Tecnologías utilizadas
 
-1. **Clona el repositorio**  
-   ```bash
-   git clone https://github.com/UNACH-DTIC/unachito_chatbot.git
-   cd unachito_chatbot
-
-Prepara el entorno
-
-bash
-Copiar
-Editar
-python3.9 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-Configura la base de datos
-
-Crea una instancia MySQL 8.0 y un usuario con permisos.
-
-Ajusta app/utils/db.py con tu cadena de conexión.
-
-Define variables de entorno
-
-ini
-Copiar
-Editar
-DATABASE_URL=mysql://user:pass@host:3306/unachito
-UNACH_API_BASE=https://api.unach.edu.ec
-EMAIL_SMTP_HOST=smtp.unach.edu.ec
-EMAIL_SMTP_USER=bot@unach.edu.ec
-EMAIL_SMTP_PASS=…
-Configura Nginx & systemd
-
-Copia deploy/unachito.service a /etc/systemd/system/.
-
-Copia deploy/unachito.conf a /etc/nginx/conf.d/.
-
-Recarga y arranca servicios:
-
-bash
-Copiar
-Editar
-systemctl daemon-reload
-systemctl enable --now unachito
-nginx -s reload
-💬 Integración en WordPress / C#
-En tu tema o plugin de WordPress (dtic.unach.edu.ec) añade al <head>:
-
-html
-Copiar
-Editar
-<link rel="stylesheet" href="https://chatbot.unach.edu.ec/widget/css/style.css?v=2" />
-<script src="https://chatbot.unach.edu.ec/widget/js/chatbot-widget.js" defer></script>
-<div id="chatbot-button">💬</div>
-En tu proyecto C# (uvirtual.unach.edu.ec) inserta el mismo bloque en la master page o layout.
-
-🛠 Uso
-Iniciar servidor
-
-bash
-Copiar
-Editar
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-Documentación interactiva
-Visita https://chatbot.unach.edu.ec/docs para probar todos los endpoints.
-
-Métricas
-Expuestas en https://chatbot.unach.edu.ec/metrics (Prometheus).
-
-📋 Endpoints clave
-Ruta	Método	Descripción
-/api/chatbot/enviar_otp	POST	Envía OTP al correo asociado a una cédula
-/api/chatbot/verificar_otp	POST	Verifica OTP y ejecuta cambio en RADIUS/LDAP
-/api/chatbot/query	POST	Clasifica consulta y responde o escala a humano
-/api/chatbot/rate_response	POST	Recibe valoración 👍/👎 para feedback del modelo
-
-🤝 Contribuciones
-Unachito está licenciado bajo GNU AFFERO GPL v3.
-Todos los cambios que despliegues como servicio web deben ponerse a disposición de los usuarios y publicarse en este repositorio.
-Para contribuir:
-
-Haz tu fork y crea una rama nueva: feature/mi-mejora.
-
-Abre un pull request describiendo tu aporte.
-
-Asegúrate de incluir tests y actualizar documentación.
-
-⚖️ Licencia
-© 2025 UNACH, Hernán Xavier Abad Hidalgo
-Este proyecto está bajo la GNU Affero GPL v3.
-
-
-
-
-# 🤖 Unachito – Chatbot Institucional de la UNACH
-
-**Unachito** es un chatbot institucional desarrollado para la Universidad Nacional de Chimborazo (UNACH), diseñado para brindar asistencia automatizada a estudiantes, docentes, administrativos y usuarios externos.
-
-<p align="center">
-  <img src="frontend/widget/img/unach-sphere.png" alt="Unachito Logo" width="120"/>
-</p>
+- **Backend:** Python 3.11, FastAPI, Uvicorn
+- **Frontend:** HTML + CSS + JS (sin frameworks externos)
+- **Base de datos:** MySQL 8.0
+- **Autenticación:** RADIUS y LDAP
+- **Embeddings:** `sentence-transformers` (distiluse-base-multilingual-cased)
+- **Scraping:** `BeautifulSoup`, `requests`
+- **Infraestructura:** Nginx, systemd
 
 ---
 
-## ✅ Funcionalidades implementadas
-
-- 💬 Responde preguntas frecuentes (FAQs) usando búsqueda semántica.
-- 🔐 Verificación de identidad por cédula y tipo de usuario (estudiante, servidor o externo).
-- 📧 Envío de código OTP al correo institucional para validar identidad.
-- 🔄 Cambio de contraseñas para servicios WiFi y Zoom.
-- 📚 Flujo completo de conversación con validación paso a paso.
-- 📜 Consentimiento de Política de Protección de Datos Personales.
-- 💡 Registro de preguntas no respondidas para análisis posterior.
-- 🖼️ Widget web adaptable, visualmente moderno y responsivo.
-
-## 🧪 Tecnologías utilizadas
-
-| Componente        | Tecnología                          |
-|-------------------|--------------------------------------|
-| API REST          | FastAPI (Python 3.10+)               |
-| IA/PLN            | SentenceTransformers (MiniLM)        |
-| Base de datos     | PostgreSQL                           |
-| Frontend          | HTML, CSS, JavaScript (widget)       |
-| Correo OTP        | aiosmtplib                           |
-| Backend adicional | Verificación por LDAP, RADIUS        |
-| Autenticación     | Validación por cédula + OTP          |
-
-## 🗃️ Estructura del repositorio
+## 📂 Estructura del proyecto
 
 ```
-📦 unachito-chatbot
-├── backend/
-│   ├── app/
-│   │   ├── routes/
-│   │   │   └── chatbot_routes.py
-│   │   ├── services/
-│   │   │   ├── radius_service.py
-│   │   │   ├── ldap_service.py
-│   │   │   ├── scraping_service.py
-│   │   │   └── unach_client.py
-│   │   ├── models/
-│   │   │   ├── faq_model.py
-│   │   │   └── unanswered_model.py
-│   │   └── knowledge_search.py
-│   └── main.py
-├── frontend/
-│   ├── widget/
-│   │   ├── js/
-│   │   │   └── chatbot-widget.js
-│   │   ├── css/
-│   │   │   └── style.css
-│   │   └── img/
-│   │       └── unach-sphere.png
-│   └── index.html
+unachito_chatbot/
+├── app/
+│   ├── main.py
+│   ├── chatbot_routes.py
+│   ├── services/
+│   │   ├── faq_model.py
+│   │   ├── knowledge_search.py
+│   │   ├── ldap_service.py
+│   │   ├── radius_service.py
+│   │   ├── scraping_service.py
+│   │   └── unach_client.py
+│   └── models/
+│       └── unanswered_model.py
+├── widget/
+│   ├── css/style.css
+│   ├── js/chatbot-widget.js
+│   └── img/unach-sphere.png
 └── README.md
 ```
 
-## 🚀 Instalación rápida (modo desarrollo)
+---
 
-### Requisitos previos
+## ⚙️ Instalación
 
-- Python 3.10+
-- PostgreSQL
-- Navegador moderno
-
-### Backend
+### 1. Clona el repositorio
 
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+git clone https://github.com/UNACH-DTIC/unachito_chatbot.git
+cd unachito_chatbot
 ```
 
-### Frontend
+### 2. Crea entorno virtual e instala dependencias
 
-Abrir el archivo `frontend/index.html` directamente en el navegador.
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-## 🔐 Seguridad y ética
+### 3. Configura base de datos
 
-- Solicita consentimiento explícito para el tratamiento de datos personales.
-- Los códigos OTP se envían únicamente a correos registrados.
-- Las preguntas no resueltas se registran para futura mejora del sistema.
+Edita tu archivo `.env` o ajusta directamente en `app/main.py`:
 
-## 🏷️ Créditos
+```
+DATABASE_URL=mysql://usuario:clave@host:3306/unachito
+UNACH_API_BASE=https://api.unach.edu.ec
+EMAIL_SMTP_HOST=smtp.unach.edu.ec
+EMAIL_SMTP_USER=bot@unach.edu.ec
+EMAIL_SMTP_PASS=********
+```
 
-Desarrollado por **HXAH**  
+### 4. Configura NGINX y systemd
+
+- Copia `unachito.service` a `/etc/systemd/system/`
+- Copia `unachito.conf` a `/etc/nginx/conf.d/`
+- Reinicia servicios:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now unachito
+sudo nginx -s reload
+```
+
+### 5. Inicia manualmente en desarrollo
+
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+---
+
+## 🌐 Integración como widget
+
+Agrega lo siguiente a tu HTML (WordPress, C#, etc.)
+
+```html
+<link rel="stylesheet" href="https://chatbot.unach.edu.ec/widget/css/style.css" />
+<script defer src="https://chatbot.unach.edu.ec/widget/js/chatbot-widget.js"></script>
+```
+
+---
+
+## 📬 Endpoints principales
+
+| Ruta                        | Método | Función                                  |
+|----------------------------|--------|-------------------------------------------|
+| `/api/chatbot/enviar_otp` | POST   | Enviar OTP al correo del usuario          |
+| `/api/chatbot/verificar_otp` | POST   | Verificar OTP y cambiar contraseña       |
+| `/api/chatbot/query`      | POST   | Clasificar y responder preguntas          |
+| `/api/chatbot/rate_response` | POST   | Recibir valoración de respuestas         |
+
+---
+
+## 👥 Créditos
+
+Desarrollado por: **Hernán Xavier Abad Hidalgo**  
 Maestría en Inteligencia Artificial Aplicada – Universidad de los Hemisferios 
+
+---
+
+## ⚖️ Licencia
+
+Este proyecto está licenciado bajo **GNU AGPL v3**.  
+Cualquier modificación que sea desplegada como servicio web debe ser publicada también.
+
+---
+
+📩 Contacto: [habad@unach.edu.ec](mailto:habad@unach.edu.ec)
