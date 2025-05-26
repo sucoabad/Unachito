@@ -126,5 +126,104 @@ Abre un pull request describiendo tu aporte.
 Asegúrate de incluir tests y actualizar documentación.
 
 ⚖️ Licencia
-© 2025 UNACH – DTIC, [Tu Nombre]
+© 2025 UNACH, Hernán Xavier Abad Hidalgo
 Este proyecto está bajo la GNU Affero GPL v3.
+
+
+
+
+# 🤖 Unachito – Chatbot Institucional de la UNACH
+
+**Unachito** es un chatbot institucional desarrollado para la Universidad Nacional de Chimborazo (UNACH), diseñado para brindar asistencia automatizada a estudiantes, docentes, administrativos y usuarios externos.
+
+<p align="center">
+  <img src="frontend/widget/img/unach-sphere.png" alt="Unachito Logo" width="120"/>
+</p>
+
+---
+
+## ✅ Funcionalidades implementadas
+
+- 💬 Responde preguntas frecuentes (FAQs) usando búsqueda semántica.
+- 🔐 Verificación de identidad por cédula y tipo de usuario (estudiante, servidor o externo).
+- 📧 Envío de código OTP al correo institucional para validar identidad.
+- 🔄 Cambio de contraseñas para servicios WiFi y Zoom.
+- 📚 Flujo completo de conversación con validación paso a paso.
+- 📜 Consentimiento de Política de Protección de Datos Personales.
+- 💡 Registro de preguntas no respondidas para análisis posterior.
+- 🖼️ Widget web adaptable, visualmente moderno y responsivo.
+
+## 🧪 Tecnologías utilizadas
+
+| Componente        | Tecnología                          |
+|-------------------|--------------------------------------|
+| API REST          | FastAPI (Python 3.10+)               |
+| IA/PLN            | SentenceTransformers (MiniLM)        |
+| Base de datos     | PostgreSQL                           |
+| Frontend          | HTML, CSS, JavaScript (widget)       |
+| Correo OTP        | aiosmtplib                           |
+| Backend adicional | Verificación por LDAP, RADIUS        |
+| Autenticación     | Validación por cédula + OTP          |
+
+## 🗃️ Estructura del repositorio
+
+```
+📦 unachito-chatbot
+├── backend/
+│   ├── app/
+│   │   ├── routes/
+│   │   │   └── chatbot_routes.py
+│   │   ├── services/
+│   │   │   ├── radius_service.py
+│   │   │   ├── ldap_service.py
+│   │   │   ├── scraping_service.py
+│   │   │   └── unach_client.py
+│   │   ├── models/
+│   │   │   ├── faq_model.py
+│   │   │   └── unanswered_model.py
+│   │   └── knowledge_search.py
+│   └── main.py
+├── frontend/
+│   ├── widget/
+│   │   ├── js/
+│   │   │   └── chatbot-widget.js
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── img/
+│   │       └── unach-sphere.png
+│   └── index.html
+└── README.md
+```
+
+## 🚀 Instalación rápida (modo desarrollo)
+
+### Requisitos previos
+
+- Python 3.10+
+- PostgreSQL
+- Navegador moderno
+
+### Backend
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+### Frontend
+
+Abrir el archivo `frontend/index.html` directamente en el navegador.
+
+## 🔐 Seguridad y ética
+
+- Solicita consentimiento explícito para el tratamiento de datos personales.
+- Los códigos OTP se envían únicamente a correos registrados.
+- Las preguntas no resueltas se registran para futura mejora del sistema.
+
+## 🏷️ Créditos
+
+Desarrollado por **HXAH**  
+Maestría en Inteligencia Artificial Aplicada – Universidad de los Hemisferios 
