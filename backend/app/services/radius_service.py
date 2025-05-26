@@ -2,7 +2,7 @@
 
 from sqlalchemy import text
 from sqlalchemy.orm import Session
-from app.utils.db import SessionLocalEstudiantes, SessionLocalDocentes, SessionLocal
+from app.utils.db import SessionLocalEstudiantes, SessionLocalServidores, SessionLocal
 from fastapi import HTTPException
 from datetime import datetime
 import logging
@@ -18,8 +18,8 @@ def change_radius_password(username: str, new_password: str, group: str, ip_orig
     try:
         if group.lower() == "estudiantes":
             db_radius: Session = SessionLocalEstudiantes()
-        elif group.lower() == "docentes":
-            db_radius: Session = SessionLocalDocentes()
+        elif group.lower() == "servidores":
+            db_radius: Session = SessionLocalServidores()
         else:
             raise HTTPException(status_code=400, detail="Grupo inválido")
     except Exception as e:

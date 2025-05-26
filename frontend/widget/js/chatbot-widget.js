@@ -1,345 +1,506 @@
+// chatbot-widget.js
+// const API_BASE = 'https://chatbot.unach.edu.ec/api/chatbot';
 (function () {
   'use strict';
 
-  const API_BASE = 'https://chatbot.unach.edu.ec/api/chatbot';
+  const API_BASE = 'http://localhost:8000/api/chatbot';
 
-  let estadoFlujo = null;
-  let datosReset = {};
-  let userName = null;
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 🌟 Estado global
+  const state = {
+    consent: false, //consent: localStorage.getItem('chatbotConsent') === 'true',
+    flujo: null,         // 'tipo' | 'cedula' | 'nombreExt' | 'servicio' | 'otp' | 'pass'
+    tipoUsuario: null,   // 'estudiante' | 'servidor' | 'externo'
+    servicio: null,      // 'wifi' | 'zoom'
+    datos: {},            // { cedula, nombre, otp, grupo }
+    intentosCedula: 0,   // ← contador de intentos para la cédula
+    intentosOtp: 0,
+    otpExpiry: null
+  };
 
-  // Crear dinámicamente el popup si no existe (modo auto)
-  if (!document.getElementById('chatbot-popup')) {
-    const popup = document.createElement('div');
+  // 1) Crear/reusar popup *sin* hidden
+  let popup = document.getElementById('chatbot-popup');
+  if (!popup) {
+    popup = document.createElement('div');
     popup.id = 'chatbot-popup';
-    popup.className = 'hidden';
-    popup.innerHTML = `
-      <div id="chatbot-header" title="Asistente virtual de la Universidad Nacional de Chimborazo">
-        <img id="chatbot-logo" src="https://dtic.unach.edu.ec/wp-content/uploads/2025/05/unach.png" alt="Logo UNACH" style="width: 30px; height: 30px; margin-right: 10px;">
-        <strong>Unachito – UNACH</strong>
-      </div>
-      <div id="chatbot-messages"></div>
-      <div id="chatbot-input">
-        <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí…" />
-        <button id="send-button">▶</button>
-      </div>
-    `;
+    popup.classList.add('hidden');  
     document.body.appendChild(popup);
   }
 
-  const chatbotButton = document.getElementById('chatbot-button');
-  const chatbotPopup = document.getElementById('chatbot-popup');
-  const sendButton = document.getElementById('send-button');
-  const userInput = document.getElementById('user-input');
-  const messagesContainer = document.getElementById('chatbot-messages');
+  console.log('state.consent:', state.consent);
 
-  if (!chatbotButton || !chatbotPopup || !sendButton || !userInput || !messagesContainer) {
-    console.error('⚠️ No se encontraron los elementos del chatbot.');
+  // 2) Inyectar siempre mismo HTML (consent + chat)
+  popup.innerHTML = `
+    <!-- Consentimiento -->
+    <div id="chatbot-consent" class="${state.consent ? 'hidden':''}">
+      <h3>Política de Protección de Datos Personales</h3>
+      <p>
+        En cumplimiento de lo dispuesto en el Acuerdo No. 012-2019, emitido por el Ministerio de Telecomunicaciones y de la Sociedad de la información, comunicamos nuestra política para el tratamiento de datos personales. Para continuar navegando en este sitio debe aceptar los términos de la misma.
+        Consulta la  
+        <a href="https://www.unach.edu.ec/politica-de-proteccion-de-datos-personales/" target="_blank">
+          Política de Protección de Datos Personales
+        </a>.
+      </p>
+      <label><input type="checkbox" id="consent-checkbox"/> Acepto la política</label>
+      <button id="consent-button" disabled>Aceptar y continuar</button>
+    </div>
+    <!-- Chat (oculto hasta aceptar) -->
+    <div id="chatbot-chat" class="${state.consent ? '':'hidden'}">
+      <div id="chatbot-header">
+        <img id="chatbot-logo" src="https://dtic.unach.edu.ec/wp-content/uploads/2025/05/unach.png" alt="Logo UNACH">
+        <strong>Unachito</strong>
+      </div>
+      <div id="chatbot-messages"></div>
+      <div id="chatbot-input">
+        <input type="text" id="user-input" placeholder="Escribe aquí…" autocomplete="off"/>
+        <button id="send-button">▶</button>
+      </div>
+    </div>
+  `;
+
+  // 3) Crear / reusar botón flotante
+  let btnToggle = document.getElementById('chatbot-button');
+  if (!btnToggle) {
+    btnToggle = document.createElement('button');
+    btnToggle.id = 'chatbot-button';
+    btnToggle.textContent = '💬';
+    document.body.appendChild(btnToggle);
+  }
+
+  // 4) Capturar **todas** las referencias que vas a usar:
+  const consentBox  = popup.querySelector('#chatbot-consent');
+  const consentBtn  = popup.querySelector('#consent-button');
+  const chatBox     = popup.querySelector('#chatbot-chat');
+  const chkBox      = popup.querySelector('#consent-checkbox');
+  const btnSend     = popup.querySelector('#send-button');
+  const inputField  = popup.querySelector('#user-input');
+  const messageBox  = popup.querySelector('#chatbot-messages');
+
+  if (![btnToggle, consentBox, consentBtn, chatBox, chkBox, btnSend, inputField, messageBox]
+      .every(el => el)) {
+    console.error('Chatbot: faltan elementos del DOM');
     return;
   }
 
-//  chatbotButton.addEventListener('click', () => chatbotPopup.classList.toggle('hidden'));
-  
-  chatbotButton.addEventListener('click', () => {
-    chatbotPopup.classList.toggle('hidden');
-  
-    // Animación en el ícono al abrir el chatbot
+  // 5) Bloquear inputs hasta consentimiento
+  function toggleChatElements(on) {
+    popup.querySelectorAll(
+      '#chatbot-input input, #chatbot-input button, .option-btn'
+    ).forEach(el => {
+      el.disabled = !on;
+      el.style.pointerEvents = on ? 'auto' : 'none';
+      el.style.opacity       = on ? '1' : '0.5';
+    });
+  }
+  toggleChatElements(state.consent);
+
+  // 6) Checkbox → habilita “Aceptar”
+  chkBox.addEventListener('change', () => {
+    consentBtn.disabled = !chkBox.checked;
+  });
+
+  // 7) Al aceptar la política
+  consentBtn.addEventListener('click', () => {
+    state.consent = true;
+    //localStorage.setItem('chatbotConsent','true');
+    consentBox.classList.add('hidden');
+    chatBox.classList.remove('hidden');
+    toggleChatElements(true);
+    iniciarChat();    // saludo inicial
+  });
+
+  // 8) Toggle popup
+  btnToggle.addEventListener('click', () => {
+    // antes, restablezco qué bloque debe verse
+    if (!state.consent) {
+      consentBox.classList.remove('hidden');
+      chatBox.classList.add('hidden');
+    } else {
+      consentBox.classList.add('hidden');
+      chatBox.classList.remove('hidden');
+    }
+    popup.classList.toggle('hidden');
+    animateLogo();
+  });
+
+  // 9) Eventos de envío de mensajes
+  btnSend.addEventListener('click', handleInput);
+  inputField.addEventListener('keypress', e => {
+    if (e.key === 'Enter') handleInput();
+  });
+
+  // — Función inicial de saludo —
+  function iniciarChat() {
+    state.flujo = 'tipo';
+    appendBot(
+      '👋 <strong>¡Hola! Soy Unachito</strong>.<br>😊 ¿Eres Estudiante, Servidor o Externo?',
+      ['Estudiante','Servidor','Externo']
+    );
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ✉️ Eventos de entrada
+  btnSend.addEventListener('click', handleInput);
+  inputField.addEventListener('keypress', e => {
+    if (e.key === 'Enter') handleInput();
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 💬 Handler general
+  function handleInput() {
+    const texto = inputField.value.trim();
+    if (!texto) return;
+    appendUser(texto);
+    inputField.value = '';
+
+    switch (state.flujo) {
+      case 'tipo':       return seleccionarTipo(texto);
+      case 'cedula':     return ingresarCedula(texto);
+      case 'nombreExt':  return ingresarNombreExterno(texto);
+      case 'servicio':   return seleccionarServicio(texto);
+      case 'otp':        return ingresarOtp(texto);
+      case 'pass':       return ingresarNuevaPass(texto);
+      default:           return buscarRespuesta(texto);
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 1️⃣ Seleccionar tipo de usuario
+  function seleccionarTipo(text) {
+    const t = text.toLowerCase();
+    if (!['estudiante','servidor','externo'].includes(t)) {
+      return appendBot(
+        '❓ Selecciona una opción válida:',
+        ['Estudiante', 'Servidor', 'Externo']
+      );
+    }
+    state.tipoUsuario = t;
+    if (t === 'externo') {
+      state.flujo = 'nombreExt';
+      appendBot('👍 ¡Genial! ¿Cómo te llamas?');
+    } else {
+      state.flujo = 'cedula';
+      appendBot('🪪 Por favor ingresa tu cédula (8–10 dígitos):');
+    }
+  }
+
+  // 2️⃣ Ingresar cédula y obtener nombre
+
+  function ingresarCedula(text) {
+    const ced = text.trim();
+
+    // 1️⃣ Validación de formato
+    if (!/^[0-9]{8,10}$/.test(ced)) {
+      state.intentosCedula = (state.intentosCedula || 0) + 1;
+      const restantes = 3 - state.intentosCedula;
+      if (restantes > 0) {
+        return appendBot(
+          `❗ Formato incorrecto. Usa 8–10 dígitos numéricos.` +
+          `\nIntentos restantes: ${restantes}.`
+        );
+      }
+      // agotó intentos → reset y volver al inicio
+      state.intentosCedula = 0;
+      state.flujo = 'tipo';
+      return appendBot(
+        '❗ Demasiados intentos inválidos de cédula. Volvamos al inicio.<br>' +
+        '¿Eres Estudiante, Servidor o Externo?',
+        ['Estudiante','Servidor','Externo']
+      );
+    }
+
+    // 2️⃣ Formato OK: reset contador y petición al backend
+    state.intentosCedula = 0;
+    state.datos.cedula = ced;
+    appendBot('🔎 Consultando tus datos…');
+
+    post('/get_user_info', { cedula: ced, user_type: state.tipoUsuario })
+      .then(res => {
+        if (res.error) {
+          // usuario no existe → reintentar
+          state.intentosCedula++;
+          const restantes = 3 - state.intentosCedula;
+          if (restantes > 0) {
+            state.flujo = 'cedula';
+            return appendBot(
+              `❗ ${res.error}. Por favor, inténtalo de nuevo.` +
+              `\nIntentos restantes: ${restantes}.`
+            );
+          }
+          // agotó intentos → reset y volver al inicio
+          state.intentosCedula = 0;
+          state.flujo = 'tipo';
+          return appendBot(
+            `❗ Usuario no encontrado tras varios intentos. Volvamos al inicio.<br>` +
+            `¿Eres Estudiante, Servidor o Externo?`,
+            ['Estudiante','Servidor','Externo']
+          );
+        }
+        // encontrado → saludo y menú de servicios
+        state.intentosCedula = 0;
+        state.datos.nombre = res.nombre;
+        state.flujo = 'servicio';
+        appendBot(
+          `👋 ¡Hola, <strong>${res.nombre}</strong>! ¿Qué necesitas hoy?`,
+          ['WiFi','Zoom','FAQs']
+        );
+      })
+      .catch(() => {
+        // error de red → permitimos reintento
+        state.flujo = 'cedula';
+        appendBot(
+          '❗ Hubo un error al contactar al servidor. ' +
+          'Por favor, ingresa tu cédula de nuevo.'
+        );
+      });
+  }
+
+
+  // 3️⃣ Ingresar nombre para usuario externo
+  function ingresarNombreExterno(text) {
+    state.datos.nombre = text;
+    state.flujo = null;
+    appendBot(
+      `🙂 ¡Un placer, <strong>${text}</strong>! Puedes preguntarme cualquier FAQ.`,
+      []
+    );
+  }
+
+  // 4️⃣ Seleccionar servicio o FAQs
+  function seleccionarServicio(text) {
+    const svc = text.toLowerCase();
+
+    // 1️⃣ Validación de opción
+    if (!['wifi','zoom','faqs'].includes(svc)) {
+      return appendBot(
+        '❓ Por favor, elige una opción válida:',
+        ['WiFi','Zoom','FAQs']
+      );
+    }
+
+    // 2️⃣ Opción FAQs pura
+    if (svc === 'faqs') {
+      state.flujo = null;
+      return appendBot('📚 ¡Claro! Pregúntame cualquier cosa sobre nuestras FAQs.');
+    }
+
+    // 3️⃣ Preparamos datos para el OTP
+    state.servicio = svc;
+    state.datos.grupo = state.tipoUsuario === 'estudiante' ? 'estudiantes' : 'servidores';
+    state.flujo = 'otp';
+
+    // 4️⃣ Verificamos la cuenta
+    appendBot(`⏳ Verificando tu cuenta para <strong>${svc.toUpperCase()}</strong>…`);
+    post('/check_account', {
+      cedula:     state.datos.cedula,
+      user_type:  state.tipoUsuario,
+      servicio:   svc
+    })
+    .then(res => {
+      if (!res.exists) {
+        // si no existe, salimos del flujo de OTP
+        state.flujo = null;
+        return appendBot(`❗ No encontramos tu cuenta de <strong>${svc.toUpperCase()}</strong>.`);
+      }
+      // si existe, solicitamos envío de OTP y devolvemos esa promesa
+      return post('/enviar_otp', {
+        cedula:     state.datos.cedula,
+        user_type:  state.tipoUsuario,
+        servicio:   svc
+      });
+    })
+    .then(res2 => {
+      // si viene undefined (por no existir cuenta), terminamos
+      if (!res2) return;
+
+      // Aquí guardamos el timestamp de expiración (ahora + 10 minutos)
+      state.otpExpiry = Date.now() + 10 * 60 * 1000;
+
+      // Mostrar al usuario a qué correo llegó el OTP
+      appendBot(`✅ ${res2.message}`);
+      appendBot('✉️ Por favor, pega o ingresa aquí tu código OTP:');
+    })
+    .catch(() => {
+      state.flujo = null;
+      appendBot('❗ Ocurrió un problema. Por favor, inténtalo de nuevo más tarde.');
+    });
+  }
+
+
+  // 5️⃣ Ingresar y verificar OTP
+  function ingresarOtp(text) {
+    const now = Date.now();
+    const diffMs = (state.otpExpiry || 0) - now;
+
+    // 1) Si ya expiró, abortamos
+    if (diffMs <= 0) {
+      state.flujo = 'servicio';
+      appendBot(
+        '⌛ Lo siento, tu código OTP ha expirado. ' +
+        'Por favor, vuelve a solicitar uno nuevo.',
+        ['WiFi','Zoom','FAQs']
+      );
+      return;
+    }
+
+    // 2) Si sigue válido, mostramos el tiempo restante
+    const minutos = Math.floor(diffMs / 60000);
+    const segundos = Math.floor((diffMs % 60000) / 1000);
+    appendBot(
+      `⏳ Te quedan ${minutos} min ${segundos} seg para ingresar el OTP…`
+    );
+
+    // 3) Procedemos a verificar
+    state.datos.otp = text.trim();
+    state.intentosOtp = (state.intentosOtp || 0) + 1;
+
+    post('/verificar_otp', {
+      cedula: state.datos.cedula,
+      otp:    state.datos.otp
+    })
+    .then(res => {
+      if (res.status === 'success') {
+        state.intentosOtp = 0;
+        state.flujo = 'pass';
+        appendBot('✅ OTP correcto. Ahora ingresa tu nueva contraseña:');
+      } else {
+        const restantes = 3 - state.intentosOtp;
+        if (restantes > 0) {
+          state.flujo = 'otp';
+          appendBot(
+            `❗ OTP inválido. Te quedan ${restantes} intento${restantes > 1 ? 's' : ''}.`
+          );
+        } else {
+          state.flujo = 'servicio';
+          state.intentosOtp = 0;
+          appendBot(
+            '❗ Has agotado los intentos. Volvemos al menú de servicios:',
+            ['WiFi','Zoom','FAQs']
+          );
+        }
+      }
+    })
+    .catch(() => {
+      appendBot('❗ Error al verificar OTP. Intenta de nuevo.');
+      state.flujo = 'otp';
+    });
+  }
+
+
+  // 6️⃣ Ingresar nueva contraseña
+  function ingresarNuevaPass(text) {
+    appendBot('🔄 Actualizando tu contraseña…');
+    const endpoint = state.servicio === 'zoom'
+      ? '/reset_zoom_password'
+      : '/reset_radius_password';
+
+    post(endpoint, {
+      username: state.datos.cedula,
+      confirm_data: state.datos.otp,
+      new_password: text,
+      grupo: state.datos.grupo
+    })
+    .then(res => {
+      appendBot(
+        `🎉 ¡Listo! Tu contraseña de <strong>${state.servicio.toUpperCase()}</strong> ha sido actualizada.`,
+        ['WiFi','Zoom','FAQs','No, gracias']
+      );
+      state.flujo = 'servicio';
+    })
+    .catch(() => {
+      state.flujo = null;
+      appendBot('❗ No pude actualizar la contraseña. Intenta de nuevo.');
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 🌐 Flujo FAQ / búsqueda semántica
+  async function buscarRespuesta(text) {
+    appendBot('⌛ Buscando la mejor respuesta…');
+    try {
+      const { fuente, respuesta, acciones=[] } = await post('/query', { pregunta: text });
+      removeLoading();
+      appendBot(respuesta, acciones);
+      if (fuente === 'Saludo')       state.flujo = 'tipo';
+      else if (fuente === 'Manejo especial') state.flujo = 'servicio';
+      else                              state.flujo = null;
+    } catch {
+      removeLoading();
+      appendBot('❗ Error de conexión con el servidor.');
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 🎨 Utilidades de UI
+
+  function appendBot(html, opciones = []) {
+    const msg = document.createElement('div');
+    msg.className = 'message bot';
+    msg.innerHTML = `<strong>Chatbot:</strong> ${html}${renderButtons(opciones)}`;
+    messageBox.appendChild(msg);
+    messageBox.scrollTop = messageBox.scrollHeight;
+  }
+
+  function appendUser(text) {
+    const msg = document.createElement('div');
+    msg.className = 'message user';
+    msg.innerHTML = `<strong>Tú:</strong> ${text}`;
+    messageBox.appendChild(msg);
+    messageBox.scrollTop = messageBox.scrollHeight;
+  }
+
+  function renderButtons(list) {
+    if (!list.length) return '';
+    return `<div class="bot-options">` +
+      list.map(opt =>
+        `<button class="option-btn" data-opt="${opt}">${opt}</button>`
+      ).join('') +
+      `</div>`;
+  }
+
+  function removeLoading() {
+    const last = messageBox.querySelector('.message.bot:last-child');
+    if (last && /⌛/.test(last.textContent)) last.remove();
+  }
+
+  function animateLogo() {
     const logo = document.getElementById('chatbot-logo');
-    if (logo) {
-      logo.style.transition = 'transform 0.3s ease';
-      logo.style.transform = 'scale(1.2)';
-      setTimeout(() => {
-        logo.style.transform = 'scale(1)';
-      }, 300);
+    logo?.classList.add('pop');
+    setTimeout(() => logo?.classList.remove('pop'), 300);
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 🔘 Delegación de clicks en botones de acción
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.option-btn');
+    if (!btn) return;
+    const opt = btn.dataset.opt;
+    switch (state.flujo) {
+      case 'tipo':       return seleccionarTipo(opt);
+      case 'servicio':   return seleccionarServicio(opt);
+      case 'otp':        return ingresarOtp(opt);
+      case 'pass':       return ingresarNuevaPass(opt);
+      default:
+        if (opt === 'No, gracias') {
+          appendBot('👍 ¡Perfecto! Si necesitas algo más, aquí estaré.');
+          state.flujo = null;
+        }
+        if (opt === 'Mostrar FAQs') {
+          appendBot('📚 Adelante, haz tu consulta sobre FAQs.');
+          state.flujo = null;
+        }
     }
   });
-	
-	
-  sendButton.addEventListener('click', handleUserInput);
-  userInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleUserInput(); });
 
-  // 👂 Entrada principal del usuario
-  async function handleUserInput() {
-    const text = userInput.value.trim();
-    if (!text) return;
-
-    appendMessage('Tú', text);
-    userInput.value = '';
-
-    const lower = text.toLowerCase();
-
-    // 🪪 Flujo de cambio de contraseña
-    if (estadoFlujo === 'esperando_cedula') return handleCedula(text);
-    if (estadoFlujo === 'esperando_cedula_zoom') return handleCedulaZoom(text);
-    if (estadoFlujo === 'esperando_otp_zoom') return handleOtpZoom(text);
-    if (estadoFlujo === 'esperando_nueva_contrasena_zoom') return handleNuevaContrasenaZoom(text);
-    if (estadoFlujo === 'esperando_otp') return handleOtp(text);
-    if (estadoFlujo === 'esperando_nueva_contrasena') return handleNuevaContrasena(text);
-
-    // 💬 Si estamos esperando nombre (después de saludo del backend)
-    if (estadoFlujo === 'esperando_nombre') {
-      const name = extractName(text);
-      if (name) {
-        userName = name;
-        estadoFlujo = null;
-        appendMessage('Chatbot', `¡Mucho gusto, ${userName}! 😊 ¿En qué puedo ayudarte hoy?`);
-        return;
-      }
-    }
-
-    // 🔁 Envío normal al backend
-    await fetchChatbotResponse(text);
-  }
-
-  // 🌐 Consulta al backend
-async function fetchChatbotResponse(question) {
-  try {
-    // Primero hacemos el fetch al backend
-    const res = await fetch(`${API_BASE}/query`, {
-      method: 'POST',
+  // ─────────────────────────────────────────────────────────────────────────────
+  // 📡 Helper para POST
+  async function post(path, body) {
+    const res = await fetch(API_BASE + path, {
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pregunta: question })
-    });
-
-    const data = await res.json();
-    const respuesta = data.respuesta || 'Lo siento, hubo un problema.';
-    const fuente = data.fuente ? `<br><small>🔎 Fuente: ${data.fuente}</small>` : '';
-    const botonesHTML = generateActions(data.acciones);
-
-    // Si es saludo, NO mostrar cargando y activar captura de nombre
-    if (data.fuente === 'Saludo') {
-      estadoFlujo = 'esperando_nombre';
-      appendMessage("Chatbot", `${respuesta}${fuente}`, botonesHTML);
-      return;
-    }
-
-    // Si es manejo especial, tampoco mostrar cargando
-    if (data.fuente === 'Manejo especial') {
-      appendMessage("Chatbot", `${respuesta}${fuente}`, botonesHTML);
-      return;
-    }
-
-    // Solo aquí mostrar mensaje "⌛ Estoy buscando..."
-    const msgId = `loading-msg-${Date.now()}`;
-    const loadingDiv = document.createElement('div');
-    loadingDiv.id = msgId;
-    loadingDiv.className = 'message bot loading';
-    loadingDiv.innerHTML = '<strong>Chatbot:</strong> ⌛ Estoy buscando en los sitios de la UNACH. Un momento por favor...';
-    messagesContainer.appendChild(loadingDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    // Simula una pequeña espera (puedes quitar si no deseas)
-    await new Promise(resolve => setTimeout(resolve, 200));
-
-    // Elimina mensaje de espera y muestra respuesta final
-    const loading = document.getElementById(msgId);
-    if (loading) loading.remove();
-
-    appendMessage("Chatbot", `${respuesta}${fuente}`, botonesHTML);
-
-  } catch (err) {
-    console.error('[ERROR] Fetch chatbot:', err);
-
-    // Quitar mensaje loading si hubo error
-    const loading = document.querySelector('.message.bot.loading');
-    if (loading) loading.remove();
-
-    appendMessage("Chatbot", "❗ Error de conexión con el servidor.");
-  }
-}
-
-
-  // 🧩 Botones adicionales (wifi, moodle, etc.)
-  function generateActions(actions = []) {
-    if (!actions.length) return '';
-    let html = '<div class="bot-options" style="margin-top:10px;">';
-    actions.forEach(act => {
-      html += `<button class="option-btn ${act}" data-option="${act}">${act}</button>`;
-    });
-    return html + '</div>';
-  }
-
-  document.addEventListener('click', event => {
-    const button = event.target.closest('.option-btn');
-    if (!button) return;
-
-    const option = button.getAttribute('data-option');
-    switch (option) {
-      case 'wifi':
-        appendMessage('Chatbot', '¿Eres estudiante?', `
-          <div class="bot-options" style="margin-top:10px;">
-            <button class="option-btn grupo-estudiante" data-option="grupo-estudiante">✅ Estudiante</button>
-            <button class="option-btn grupo-docente" data-option="grupo-docente">❌ Docente/Administrativo</button>
-          </div>`);
-        break;
-      case 'grupo-estudiante':
-      case 'grupo-docente':
-        datosReset.grupo = option === 'grupo-estudiante' ? 'estudiantes' : 'docentes';
-        appendMessage('Chatbot', `✅ Seleccionado: ${option === 'grupo-estudiante' ? 'Estudiante' : 'Docente/Administrativo'}. Ingresa tu cédula.`);
-        estadoFlujo = 'esperando_cedula';
-        break;
-      case 'office365':
-        appendMessage('Chatbot', `Puedes restablecer tu contraseña de Office 365 accediendo a <a href="https://passwordreset.microsoftonline.com/" target="_blank" style="color: #005baa; font-weight: bold;">este enlace</a>. 
-    Si necesitas ayuda adicional, también puedes ingresar a <a href="https://portal.office.com" target="_blank" style="color: #005baa; font-weight: bold;">portal.office.com</a> y seguir las instrucciones de recuperación.`
-  );
-	break;
-      case 'moodle':
-	appendMessage('Chatbot',  "Para cambiar tu contraseña de Moodle, accede al portal y usa <a href='https://moodle.unach.edu.ec/login/forgot_password.php' target='_blank' style='color: #005baa; font-weight: bold;'>¿Olvidaste tu contraseña?</a>.");
-        break;
-      case 'zoom':
-	appendMessage('Chatbot', 'Por favor, ingresa tu cédula para iniciar el proceso de cambio de contraseña de Zoom.');
-	estadoFlujo = 'esperando_cedula_zoom';
-	break;
-    }
-  }) ;
-
-// SECCION ZOOM - LDAP
-	
-
-async function handleCedulaZoom(cedula) {
-  datosReset.cedula = cedula;
-  datosReset.servicio = 'zoom'; // 👈 IMPORTANTE para distinguir el tipo
-
-  appendMessage('Chatbot', 'Enviando OTP para restablecer contraseña de Zoom...');
-
-  try {
-    const response = await post(`${API_BASE}/enviar_otp`, { cedula });
-
-    if (response.status === 'success') {
-      appendMessage('Chatbot', `✅ ${response.message} Ingresa el código OTP que llegó a tu correo institucional.`);
-      estadoFlujo = 'esperando_otp';
-    } else {
-      appendMessage('Chatbot', `❗ Error: ${response.detail || 'No se pudo enviar OTP.'}`);
-      estadoFlujo = null;
-    }
-  } catch (err) {
-    appendMessage('Chatbot', '❗ Error de conexión al enviar OTP.');
-    estadoFlujo = null;
-  }
-}
-
-
-//SECCION WIFI - RADIUS
-  // 🔐 Flujo OTP
-  async function handleCedula(cedula) {
-    datosReset.cedula = cedula;
-    appendMessage('Chatbot', `${userName ? `${userName}, ` : ''}enviando OTP...`);
-
-    try {
-      const response = await post(`${API_BASE}/enviar_otp`, { cedula });
-      if (response.status === 'success') {
-        appendMessage('Chatbot', `✅ ${response.message} Ingresa el código OTP.`);
-        estadoFlujo = 'esperando_otp';
-      } else {
-        appendMessage('Chatbot', `❗ Error: ${response.detail || 'No se pudo enviar OTP.'}`);
-        estadoFlujo = null;
-      }
-    } catch (err) {
-      appendMessage('Chatbot', '❗ Error de conexión al enviar OTP.');
-      estadoFlujo = null;
-    }
-  }
-
-  async function handleOtp(otp) {
-    datosReset.otp = otp;
-    appendMessage('Chatbot', 'Verificando OTP...');
-
-    try {
-      const response = await post(`${API_BASE}/verificar_otp`, {
-        cedula: datosReset.cedula,
-        otp
-      });
-
-      if (response.status === 'success') {
-        appendMessage('Chatbot', `✅ OTP verificado. Ingresa tu nueva contraseña.`);
-        estadoFlujo = 'esperando_nueva_contrasena';
-      } else {
-        appendMessage('Chatbot', `❗ Error: ${response.detail}`);
-        estadoFlujo = null;
-      }
-    } catch (err) {
-      appendMessage('Chatbot', '❗ Error verificando OTP.');
-      estadoFlujo = null;
-    }
-  }
-
-
-  async function handleNuevaContrasena(password) {
-    datosReset.new_password = password;
-    appendMessage('Chatbot', 'Actualizando contraseña...');
-  
-    const endpoint = datosReset.servicio === 'zoom'
-      ? `${API_BASE}/reset_zoom_password`
-      : `${API_BASE}/reset_radius_password`;
-  
-    try {
-      const response = await post(endpoint, {
-        username: datosReset.cedula,
-        confirm_data: datosReset.otp,
-        new_password: password,
-        grupo: datosReset.grupo || 'estudiantes'
-      });
-  
-      if (response.status === 'success') {
-        appendMessage('Chatbot', `✅ ¡Listo${userName ? `, ${userName}` : ''}! ${response.message}`);
-      } else {
-        appendMessage('Chatbot', `❗ Error: ${response.detail}`);
-      }
-    } catch (err) {
-      appendMessage('Chatbot', '❗ Error al cambiar la contraseña.');
-    } finally {
-      estadoFlujo = null;
-      datosReset = {};
-    }
-  }
-
-
-
-  // 🧠 Detección y capitalización de nombre
-  function extractName(text) {
-    const blacklist = ['hola', 'buenos', 'días', 'dias', 'tardes', 'noches', 'saludos', 'hello', 'hi'];
-    const patterns = [
-      /me llamo\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i,
-      /soy\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i,
-      /mi nombre es\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)/i
-    ];
-    for (const regex of patterns) {
-      const match = text.match(regex);
-      if (match && !blacklist.includes(match[1].toLowerCase())) {
-        return capitalize(match[1]);
-      }
-    }
-    const words = text.split(/\s+/);
-    if (
-      words.length === 1 &&
-      /^[A-Za-zÁÉÍÓÚáéíóúñÑ]+$/.test(words[0]) &&
-      !blacklist.includes(words[0].toLowerCase())
-    ) {
-      return capitalize(words[0]);
-    }
-    return null;
-  }
-
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  }
-
-  // 🧾 Función POST genérica
-  async function post(url, body) {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body:    JSON.stringify(body)
     });
     return res.json();
   }
 
-  // 📥 Mostrar mensaje en el DOM
-  function appendMessage(sender, text, extraHTML = '') {
-    const msg = document.createElement('div');
-    msg.classList.add('message', sender === 'Tú' ? 'user' : 'bot');
-    msg.innerHTML = `<div><strong>${sender}:</strong> ${text}</div>${extraHTML}`;
-    messagesContainer.appendChild(msg);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-  }
 })();
-

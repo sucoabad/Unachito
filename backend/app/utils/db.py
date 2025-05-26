@@ -26,12 +26,12 @@ SessionLocalEstudiantes = sessionmaker(
 )
 
 # -----------------------------------
-# Sesión para RADIUS Docentes (MySQL)
+# Sesión para RADIUS servidores (MySQL)
 engine_doc = create_engine(
-    str(settings.DATABASE_URL_DOCENTES),
+    str(settings.DATABASE_URL_SERVIDORES),
     pool_pre_ping=True,
     connect_args={"charset": "utf8"}            # <— fuerza utf8
 )
-SessionLocalDocentes = sessionmaker(
+SessionLocalServidores = sessionmaker(
     autocommit=False, autoflush=False, bind=engine_doc
 )

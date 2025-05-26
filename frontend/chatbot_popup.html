@@ -1,23 +1,21 @@
-<meta charset="UTF-8">
-<!-- CHATBOT UNACH WIDGET -->
-<link rel="stylesheet" href="widget/css/style.css">
-<link rel="icon" href="https://dtic.unach.edu.ec/wp-content/uploads/2025/05/unach.png">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Asistente Unachito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="widget/css/style.css">
+</head>
+<body>
 
-<!-- Botón flotante -->
-<button id="chatbot-button">💬</button>
+  <!-- Tu contenido de página aquí... -->
 
-<!-- Ventana popup -->
-<div id="chatbot-popup" class="hidden">
-	<div id="chatbot-header" title="Asistente virtual de la Universidad Nacional de Chimborazo">
-	    <img id="chatbot-logo" src="https://dtic.unach.edu.ec/wp-content/uploads/2025/05/unach.png" alt="Logo UNACH" style="width: 30px; height: 30px; margin-right: 10px;">
-	    <strong>Unachito – UNACH</strong>
-	</div>
+  <!-- Botón flotante -->
+  <button id="chatbot-button"></button>
 
-    <div id="chatbot-messages"></div>
-    <div id="chatbot-input">
-        <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí…" />
-        <button id="send-button">▶</button>
-    </div>
-</div>
+  <!-- Popup (se rellenará desde JavaScript) -->
+  <div id="chatbot-popup" class="hidden"></div>
 
-<script src="widget/js/chatbot-widget.js"></script>
+  <script src="widget/js/chatbot-widget.js"></script>
+</body>
+</html>
