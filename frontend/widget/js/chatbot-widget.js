@@ -51,10 +51,15 @@
         <strong>Unachito</strong>
       </div>
       <div id="chatbot-messages"></div>
-      <div id="chatbot-input">
-        <input type="text" id="user-input" placeholder="Escribe aquí…" autocomplete="off"/>
-        <button id="send-button">▶</button>
-      </div>
+        <div id="chatbot-input">
+          <input type="text" id="user-input" placeholder="Escribe aquí…" autocomplete="off"/>
+          <button id="send-button">▶</button>
+        </div>
+
+        <!-- NUEVO PIE DE PÁGINA -->
+        <div id="chatbot-footer">
+          Desarrollado por HXAH
+        </div>
     </div>
   `;
 
@@ -432,12 +437,12 @@
 
   // ─────────────────────────────────────────────────────────────────────────────
   // 🎨 Utilidades de UI
-
   function appendBot(html, opciones = []) {
     const msg = document.createElement('div');
     msg.className = 'message bot';
     msg.innerHTML = `<strong>Chatbot:</strong> ${html}${renderButtons(opciones)}`;
     messageBox.appendChild(msg);
+    // scroll sólo dentro de #chatbot-messages
     messageBox.scrollTop = messageBox.scrollHeight;
   }
 
@@ -446,8 +451,10 @@
     msg.className = 'message user';
     msg.innerHTML = `<strong>Tú:</strong> ${text}`;
     messageBox.appendChild(msg);
+    // scroll sólo dentro de #chatbot-messages
     messageBox.scrollTop = messageBox.scrollHeight;
   }
+
 
   function renderButtons(list) {
     if (!list.length) return '';
